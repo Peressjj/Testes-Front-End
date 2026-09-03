@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.fundo-blur {
+    position: fixed;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -40px;
+
+    background: linear-gradient(135deg, #c084fc, #8d088f, #ec4899);
+    filter: blur(40px);
+    z-index: 0;
+}
+
+.btn-voltar-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1;
+
+    width: 44px;
+    height: 44px;
+
+    background-color: #e11d48;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.btn-voltar-home:hover {
+    background-color: #be123c;
+}

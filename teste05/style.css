@@ -1,0 +1,59 @@
+:root {
+    --fundo-principal: #0D1117;
+    --fundo-secundario: #161B22;
+    --preto-matrix: #000000;
+    --verde-escuro: #003B00;
+    --verde: #008000;
+    --verde-medio: #00AA00;
+    --verde-matrix: #00FF00;
+    --verde-neon: #39FF14;
+    --texto-principal: #E0FFE0;
+    --texto-secundario: #8FBC8F;
+    --cinza-esverdeado: #6A9955;
+    --borda: #1F5F1F;
+}
+
+body {
+    background-color: #262624;
+    background-image: url(../../imagens/Wallpaper\ oceano\ PC.jpg);
+
+}
+
+
+p {
+    color: darkgray;
+}
+
+header {
+    border: 2px solid darkgray;
+    padding: 50px;
+    height: 110px;
+}
+
+h1 {
+    display: flex;
+    color: lightgray;
+    border: 1px darkgray; /*borda*/
+    border: transparent;
+    height: 36px; /*altura*/ 
+    width: auto; /*largura*/
+    margin-left: -1px; /*espaço vazio a esquerda*/
+    margin-right: 100px; /*espaço vazio a direitoa*/
+    margin-top: -30px; /*espaço vazio encima*/
+    cursor: pointer;
+}
+
+span {
+    color: #ffffff;
+    color: darkgray;
+}
+
+.teste {
+    border: solid red 5px;
+    height: 230px;
+}
+
+.teste2 {
+    border: solid green 5px;
+    height: 230px;
+}

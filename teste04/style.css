@@ -1,0 +1,37 @@
+body {
+    background-color: #262624;
+}
+
+.paragrafo_p2 {
+    color: brown;
+}
+
+p#paragrafo_p1 {
+    color: red;
+}
+
+p {
+    color: darkgray;
+}
+
+header {
+    border: 2px solid white;
+    padding: 50px;
+}
+
+h1 {
+    display: flex;
+    color: lightgray;
+    border: 1px solid rgb(255, 255, 255); /*borda*/
+    height: 36px; /*altura*/ 
+    width: auto; /*largura*/
+    margin-left: -20px; /*espaço vazio a esquerda*/
+    margin-right: 100px; /*espaço vazio a direitoa*/
+    margin-top: -30px; /*espaço vazio encima*/
+    cursor: pointer;
+}
+
+span {
+    color: #ffffff;
+    color: darkgray;
+}

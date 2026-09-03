@@ -1,0 +1,155 @@
+* {
+   margin: 0px;
+   padding-top: 0px;
+   /*box-sizing: border-box;*/
+}
+
+body {
+   background-image: url(../..//imagens/Wallpaper\ pintura\ histórica\ PC.jpg);
+   background-repeat: no-repeat;
+   background-position: top center;
+   background-size: cover;
+   /*width: 100px;
+   height: 100px;*/
+}
+
+#container { /*Foto de perfil*/ 
+   background-image: url(../../imagens/Foto\ perfil\ anime.jpg);
+   background-size: 80px;
+   background-repeat: no-repeat;
+   background-position: top center;
+   background-size: cover;
+   border: solid 1px;
+   border-color: lightgray;
+   border-radius: 100px;
+   color: transparent;
+   width: 100px;
+   height: 100px;
+   font-size: 50px;
+   cursor: pointer;
+   margin: 56px auto 0 auto;
+}
+
+h1#João_Peres { /*Nome @peress.jj*/
+   background-position: top center;
+   background: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border-radius: 100px;
+   border: solid 1px;
+   border-color: lightgray;
+   width: 68px;
+   height: 20px;
+   bottom: 10px;
+   padding: 5px;
+   font-size: 15px;
+   color: white;
+   margin-right: auto;
+   margin-left: auto;
+   margin-top: -390px;
+}
+
+/* WHATSAPP */
+#whatsapp {
+   background-position: top center;
+   background: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border: solid 1px lightgray;
+   cursor: pointer;
+   display: block;
+   border-radius: 50px;
+   color: white;
+   margin-right: auto;
+   margin-left: auto;
+   padding: 7px;
+   margin-top: 70px;
+   transition: 0.3s;
+}
+
+.botao_whatsapp {
+   color: white;
+   /*font-style: italic;*/
+   font-family: 'Times New Roman', Times, serif;
+}
+
+#whatsapp:hover {
+   transform: scale(1.05);
+}
+
+
+/* INSTAGRAM */
+#instagram {
+   background-position: top center;
+   background: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border: solid 1px lightgray;
+   cursor: pointer;
+   display: block;
+   border-radius: 50px;
+   color: white;
+   margin-right: auto;
+   margin-left: auto;
+   padding: 7px;
+   margin-top: 10px;
+   transition: 0.3s;
+}
+
+.botao_instagram {
+   color: white;
+   /*font-style: italic;*/
+   font-family: 'Times New Roman', Times, serif;
+}
+
+#instagram:hover {
+   transform: scale(1.05);
+}
+
+
+/* GITHUB */
+#github {
+   background-position: top center;
+   background: rgba(255, 255, 255, 0.1);
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border: solid 1px lightgray;
+   cursor: pointer;
+   display: block;
+   border-radius: 50px;
+   color: white;
+   margin-right: auto;
+   margin-left: auto;
+   padding: 7px;
+   margin-top: 10px;
+   transition: 0.3s;
+}
+
+.botao_github {
+   color: white;
+   /*font-style: italic;*/
+   font-family: 'Times New Roman', Times, serif;
+}
+
+#github:hover {
+   transform: scale(1.05);
+}
+
+.teste { /*LINHA VERMELHA*/
+   height: 500px;
+   border: red solid;
+   width: 1px;
+   margin: auto;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+footer {
+   border: solid 3px red;
+   color: white;
+   background-color: black;
+   padding-top: -100px;
+   padding-bottom: 435px;
+   height: 100px;
+   bottom: 100px;
+}

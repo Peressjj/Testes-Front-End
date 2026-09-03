@@ -1,0 +1,31 @@
+body {
+    
+    /*
+    COR VSCODE
+    background-color: #1e1e1e;
+    color:d4d4d4;
+    font-family: 'Consolas', 'Courier New', monospace;
+    */
+
+    /*COR CLAUDE*/
+    background-color: #262624;
+    color: #e8e6e1;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: red;
+}
+
+button {
+    background-color: #0e639c;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1177bb;
+}

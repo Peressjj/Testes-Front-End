@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA 1: seleção de perfil -->
+    <div id="tela-selecao" class="tela-selecao">
+        <h1 class="titulo-selecao">Usuários:</h1>
+        <div id="lista-perfis" class="lista-perfis">
+            <!-- os perfis são criados aqui pelo script.js -->
+        </div>
+    </div>
+
+    <!-- TELA 2: digitação do PIN -->
+    <div id="tela-pin" class="tela-pin">
+        <div class="container-perfil">
+            <img id="foto-selecionada" src="" alt="Foto de perfil" class="foto-perfil">
+            <h2 id="nome-selecionado"></h2>
+
+            <div class="caixa-pin">
+                <label for="pin">PIN</label>
+                <input type="password" id="pin" maxlength="4" placeholder="••••">
+                <span id="mensagem-erro" class="mensagem-erro"></span>
+            </div>
+
+            <button id="btn-voltar" class="btn-voltar">← Voltar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

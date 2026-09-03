@@ -1,0 +1,34 @@
+*{
+margin: 10;
+padding: 10;
+box-sizing: border-box;
+}
+
+:root {
+    --cor-de-fundo: #262624;
+    --cor-de-fundo-secundario: #18181B;
+    --cor-primaria: #ffff;
+    --cor-destaque: #18181B;
+    --cor-texto: #18181B;
+    --cor-texto-secundario: #DADAD8;
+    --cor-borda: #27272A;
+}
+
+body {
+    background-color: var(--cor-de-fundo);
+    color: var(--cor-texto);
+}
+
+h1 {
+    color: white;
+}
+
+.link {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-size: 100;
+}
+
+.link:hover {
+    color: var(--cor-destaque);
+}
