@@ -1,0 +1,62 @@
+html body {
+   height: 100%;
+   margin: 3px;
+   font-family: cursive;
+}
+
+body {
+   background-color: black;
+   height: 100vh;
+   min-height: 100vh;
+}
+
+header {
+   border: solid white 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 10px;
+}
+
+.caixa {
+   border: solid red 5px;
+   display: inline-block;
+}
+
+.title {
+   color: white;
+}
+
+main {
+   border: solid yellowgreen 5px;
+   flex: 1;
+   height: 100vh;
+   display: grid;
+   justify-content: center;
+   align-items: flex-start;
+}
+
+.titleMain {
+   border: solid yellowgreen 2px;
+   font-size: 20px;
+   color: white;
+   display: block;
+}
+
+footer {
+   border: solid green 5px;
+   flex: 1;
+   display: flex;
+   justify-content: center;
+}
+
+.titleFooter {
+   border: solid green 2px;
+   font-size: 20px;
+   color: white
+}
+
+section {
+   border: solid orange 3px;
+   color: white;
+}
