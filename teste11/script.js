@@ -22,3 +22,4 @@ for (let i = 0; i < 5; i++) {
    item.textContent = `Aluno: ${alunos[i].nome} \nIdade: ${alunos[i].idade}\n\n`
    lista_2.appendChild(item)
 }
+
