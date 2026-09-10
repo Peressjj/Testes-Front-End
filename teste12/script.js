@@ -19,9 +19,13 @@ const soldados = [
    { nome: "Rios", posto: "S2 SNE" },
 ]
 
+const lista = document.getElementById("listaSoldados")
+
    soldados.forEach((soldado, i) => {
       console.log(`Posicao[${(i + 1)}]`)
       console.log(`Nome: ${soldado.nome}\nPosto: ${soldado.posto}\n`);
+      const item = document.createElement("li")
+      item.textContent = `Nome: ${soldado.nome} Posto: ${soldado.posto}`
+      lista.appendChild(item);
    });
 
-   
