@@ -28,7 +28,7 @@ header {
 }
 
 main {
-   border: solid yellowgreen 5px;
+   border: none;
    flex: 1;
    height: 100vh;
    display: grid;
@@ -43,19 +43,6 @@ main {
    display: block;
 }
 
-footer {
-   border: solid green 5px;
-   flex: 1;
-   display: flex;
-   justify-content: center;
-}
-
-.titleFooter {
-   border: solid green 2px;
-   font-size: 20px;
-   color: white
-}
-
 section {
    border: solid orange 3px;
    color: white;
@@ -64,4 +51,32 @@ section {
 #listaSoldados {
    width: 350px;
    padding-left: 50px;
+}
+
+.botao{
+   border: solid red 3px;
+   font-size: 25px;
+   border-radius: 10px;
+   transition: 0.3s;
+}
+
+.botao:hover {
+   border: solid red 1px;
+   scale: 1.03;
+   color: white;
+   background-color: black;
+}
+
+.mais, .menos {
+   font-size: 30px;
+   border: solid red 1px;
+   border-radius: 10px;
+   transition: 0.3s;
+}
+
+.mais:hover, .menos:hover {
+   color: white;
+   scale: 1.03;
+   background-color: black;
+   border: solid red 3px;
 }
