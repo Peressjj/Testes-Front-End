@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)file:///C:/Users/joaov/Downloads/index.html -->
+<html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Principais animações CSS — guia com exemplos</title>
+  <link rel="stylesheet" href="./Principais animações CSS — guia com exemplos_files/style.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <h1>Principais animações CSS</h1>
+    <p class="subtitulo">
+      Cada card abaixo tem a animação rodando, a explicação de para que ela serve
+      e o CSS que a cria. Todo o código está em <code>style.css</code>, comentado por seção.
+    </p>
+
+    <div class="conceitos">
+      <div class="conceito">
+        <h3><code>transition</code> — do estado A para o B</h3>
+        <p>
+          Suaviza a mudança de uma propriedade quando algo acontece: passar o mouse,
+          focar, clicar. Precisa de um <strong>gatilho</strong>, tem só início e fim,
+          e não repete sozinha.
+        </p>
+      </div>
+      <div class="conceito">
+        <h3><code>@keyframes</code> + <code>animation</code> — vários estágios</h3>
+        <p>
+          Você descreve o que acontece em cada ponto do tempo (0%, 50%, 100%).
+          Roda <strong>sozinha</strong> ao carregar a página, pode repetir infinitamente,
+          inverter e ser pausada.
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <nav class="indice">
+    <h2>Índice</h2>
+    <ul>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#transicoes">1. Transições</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#fade-in">Fade in</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#slide-in">Slide in</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#bounce">Bounce</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#pulse">Pulse</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#shake">Shake</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#spinner">Spinner</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#skeleton">Skeleton</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#digitando">Digitação</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#gradiente">Gradiente animado</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#flip">Flip 3D</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#progresso">Barra de progresso</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#acordeao">Accordion</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#controle">3. Propriedades animation-*</a></li>
+      <li><a href="file:///C:/Users/joaov/Downloads/index.html#acessibilidade">4. Acessibilidade</a></li>
+    </ul>
+  </nav>
+
+  <!-- ====================================================================
+       SEÇÃO 1 — TRANSIÇÕES
+       ==================================================================== -->
+  <section class="secao" id="transicoes">
+    <h2>1. Transições — a base de tudo</h2>
+    <p class="intro-secao">
+      Antes de usar <code>@keyframes</code>, entenda <code>transition</code>:
+      a maior parte das interações de uma interface (botões, links, cards) é só isso.
+    </p>
+
+    <div class="grade">
+
+      <!-- 1.1 transition básica -->
+      <article class="exemplo" id="transition-basica">
+        <div class="palco">
+          <div class="caixa transicao-basica">Passe o mouse</div>
+        </div>
+        <h3>transition no hover</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> fazer a mudança de cor, tamanho ou posição
+          acontecer gradualmente em vez de "pular" de um estado para o outro.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> praticamente em todo botão, link e card clicável.
+          É o efeito que faz a interface parecer polida.
+        </p>
+        <pre class="codigo"><code>.transicao-basica {
+  background-color: var(--cor-destaque);
+  /* propriedade | duração | aceleração */
+  transition: background-color 0.4s ease,
+              transform 0.4s ease;
+}
+
+.transicao-basica:hover {
+  background-color: var(--cor-ok);
+  transform: translateY(-10px);
+}</code></pre>
+        <p class="dica">
+          A <code>transition</code> fica no estado <strong>normal</strong>, não no
+          <code>:hover</code>. Assim o efeito é suave na ida <em>e</em> na volta.
+        </p>
+      </article>
+
+      <!-- 1.2 funções de tempo -->
+      <article class="exemplo exemplo-tempos largo" id="timing">
+        <div class="palco">
+          <div class="pista">
+            <div class="linha">
+              <span class="rotulo">linear</span>
+              <div class="trilho"><div class="bolinha tempo-linear"></div></div>
+            </div>
+            <div class="linha">
+              <span class="rotulo">ease</span>
+              <div class="trilho"><div class="bolinha tempo-ease"></div></div>
+            </div>
+            <div class="linha">
+              <span class="rotulo">ease-in</span>
+              <div class="trilho"><div class="bolinha tempo-ease-in"></div></div>
+            </div>
+            <div class="linha">
+              <span class="rotulo">ease-out</span>
+              <div class="trilho"><div class="bolinha tempo-ease-out"></div></div>
+            </div>
+            <div class="linha">
+              <span class="rotulo">ease-in-out</span>
+              <div class="trilho"><div class="bolinha tempo-ease-in-out"></div></div>
+            </div>
+            <div class="linha">
+              <span class="rotulo">cubic-bezier()</span>
+              <div class="trilho"><div class="bolinha tempo-bezier"></div></div>
+            </div>
+          </div>
+        </div>
+        <h3>Funções de tempo (timing functions) — passe o mouse neste card</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> controlar o <em>ritmo</em> do movimento.
+          Todas as bolinhas percorrem a mesma distância no mesmo tempo (1,2s), mas com
+          acelerações diferentes. É o que separa uma animação "robótica" de uma natural.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar cada uma:</strong>
+          <code>linear</code> para giros e loaders (velocidade constante);
+          <code>ease-out</code> para coisas que <em>entram</em> na tela (chega rápido e freia);
+          <code>ease-in</code> para coisas que <em>saem</em>;
+          <code>ease-in-out</code> para movimentos de ida e volta;
+          <code>cubic-bezier()</code> quando quiser um exagero proposital — o valor abaixo
+          passa do alvo e volta, criando o efeito de "elástico".
+        </p>
+        <pre class="codigo"><code>.bolinha {
+  transition-property: transform;
+  transition-duration: 1.2s;
+}
+
+.tempo-linear      { transition-timing-function: linear; }
+.tempo-ease        { transition-timing-function: ease; }
+.tempo-ease-in     { transition-timing-function: ease-in; }
+.tempo-ease-out    { transition-timing-function: ease-out; }
+.tempo-ease-in-out { transition-timing-function: ease-in-out; }
+.tempo-bezier      {
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+/* o gatilho: passar o mouse no card move todas as bolinhas de uma vez */
+.exemplo-tempos:hover .bolinha {
+  transform: translateX(calc(100cqw - 100%));
+}</code></pre>
+      </article>
+
+      <!-- 1.3 transform -->
+      <article class="exemplo exemplo-transform largo" id="transform">
+        <div class="palco">
+          <div class="caixa t-translate">translate</div>
+          <div class="caixa t-scale">scale</div>
+          <div class="caixa t-rotate">rotate</div>
+          <div class="caixa t-skew">skew</div>
+        </div>
+        <h3>transform: mover, redimensionar, girar e inclinar</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> mudar a aparência de um elemento sem mexer no
+          layout da página. <code>translate</code> move, <code>scale</code> aumenta/diminui,
+          <code>rotate</code> gira, <code>skew</code> inclina.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> sempre que for animar posição ou tamanho.
+        </p>
+        <pre class="codigo"><code>.exemplo-transform .caixa {
+  transition: transform 0.5s ease;
+}
+
+.t-translate:hover { transform: translate(0, -20px); }
+.t-scale:hover     { transform: scale(1.3); }
+.t-rotate:hover    { transform: rotate(45deg); }
+.t-skew:hover      { transform: skewX(-15deg); }</code></pre>
+        <p class="dica">
+          <strong>Regra de ouro de performance:</strong> anime só
+          <code>transform</code> e <code>opacity</code>. Animar
+          <code>width</code>, <code>height</code>, <code>top</code> ou <code>margin</code>
+          obriga o navegador a recalcular o layout a cada quadro e trava em celulares.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       SEÇÃO 2 — @KEYFRAMES
+       ==================================================================== -->
+  <section class="secao" id="keyframes">
+    <h2>2. Animações com @keyframes</h2>
+    <p class="intro-secao">
+      Aqui você descreve estágios. Com <code>from/to</code> (só dois estados) ou com
+      percentuais (<code>0%</code>, <code>50%</code>, <code>100%</code>) para quantos
+      estágios quiser.
+    </p>
+
+    <div class="grade">
+
+      <!-- Fade in -->
+      <article class="exemplo" id="fade-in">
+        <div class="palco">
+          <div class="caixa fade-in">Eu apareci</div>
+        </div>
+        <h3>Fade in</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> trazer um elemento da invisibilidade
+          (<code>opacity: 0</code>) até ficar visível, em vez de ele simplesmente surgir.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> entrada de conteúdo ao carregar a página,
+          abertura de modais, imagens que terminaram de carregar, troca de abas.
+        </p>
+        <pre class="codigo"><code>@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fade-in {
+  opacity: 0;                              /* estado inicial */
+  animation: aparecer 1.2s ease forwards;  /* forwards = fica no estado final */
+}</code></pre>
+        <p class="dica">
+          Sem <code>forwards</code> o elemento volta a ficar invisível ao terminar,
+          porque a animação deixa de valer e o <code>opacity: 0</code> da classe assume.
+        </p>
+      </article>
+
+      <!-- Slide in -->
+      <article class="exemplo" id="slide-in">
+        <div class="palco">
+          <div class="caixa slide-in">Deslizei</div>
+        </div>
+        <h3>Slide in</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> fazer o elemento entrar deslizando de fora da
+          área visível até a posição final, combinando <code>translateX</code> com
+          <code>opacity</code>.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> menu lateral (drawer), notificações
+          (toast) que entram pelo canto, carrosséis, seções que aparecem conforme
+          o usuário rola a página.
+        </p>
+        <pre class="codigo"><code>@keyframes entrar-esquerda {
+  from { opacity: 0; transform: translateX(-120px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.slide-in {
+  opacity: 0;
+  animation: entrar-esquerda 1s ease-out forwards;
+}</code></pre>
+      </article>
+
+      <!-- Bounce -->
+      <article class="exemplo" id="bounce">
+        <div class="palco">
+          <div class="caixa quicar">Passe o mouse</div>
+        </div>
+        <h3>Bounce (quicar)</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> dar a sensação de peso e elasticidade.
+          O elemento sobe, cai, e quica cada vez com menos força — por isso os
+          percentuais vão ficando mais próximos no fim.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> chamar atenção para uma ação disponível
+          (seta "role para baixo", ícone de chat, botão de ajuda).
+          Use com parcimônia: movimento constante cansa.
+        </p>
+        <pre class="codigo"><code>@keyframes quicar {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-30px); }
+  50%  { transform: translateY(0); }
+  70%  { transform: translateY(-15px); }  /* quica menos */
+  85%  { transform: translateY(0); }
+  92%  { transform: translateY(-6px); }   /* e menos ainda */
+  100% { transform: translateY(0); }
+}
+
+.quicar:hover { animation: quicar 1.4s ease; }</code></pre>
+      </article>
+
+      <!-- Pulse -->
+      <article class="exemplo" id="pulse">
+        <div class="palco">
+          <button class="botao pulsar-clique" type="button">Clique em mim</button>
+          <span class="badge">3 novas</span>
+        </div>
+        <h3>Pulse (pulsar)</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> crescer e voltar ao tamanho original.
+          Serve para duas coisas: <em>feedback</em> (o botão responde ao clique) e
+          <em>destaque</em> (algo pulsando em loop pede atenção).
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> feedback de clique em botões (uma vez só) e
+          badges de notificação, botão de gravar, indicador "ao vivo" (em loop).
+        </p>
+        <pre class="codigo"><code>@keyframes pulsar {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* uma vez, no clique */
+.pulsar-clique:active { animation: pulsar 0.5s ease; }
+
+/* em loop, para chamar atenção */
+.badge { animation: pulsar 1.5s ease-in-out infinite; }</code></pre>
+      </article>
+
+      <!-- Shake -->
+      <article class="exemplo" id="shake">
+        <div class="palco">
+          <input class="campo-erro" type="text" value="senha incorreta" aria-label="Campo com erro — clique para ver o efeito">
+        </div>
+        <h3>Shake (tremer) — clique dentro do campo</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> balançar o elemento rapidamente para os lados.
+          É o gesto universal de "não" — comunica erro antes mesmo de a pessoa ler a mensagem.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> erro de validação de formulário, senha incorreta,
+          ação bloqueada. Sempre acompanhado de um texto explicando o erro — a animação
+          sozinha não é acessível.
+        </p>
+        <pre class="codigo"><code>@keyframes tremer {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-10px); }
+  40%, 80% { transform: translateX(10px); }
+}
+
+.campo-erro:focus { animation: tremer 0.5s ease; }</code></pre>
+        <p class="dica">
+          Repare na vírgula: <code>20%, 60%</code> aplica o mesmo estado a dois
+          momentos diferentes, evitando repetir código.
+        </p>
+      </article>
+
+      <!-- Spinner -->
+      <article class="exemplo" id="spinner">
+        <div class="palco">
+          <div class="spinner" role="status" aria-label="Carregando"></div>
+        </div>
+        <h3>Spinner (carregando)</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> girar 360° infinitamente. O truque: um
+          quadrado com <code>border-radius: 50%</code> vira círculo, e só a borda de
+          cima recebe cor — é essa diferença que deixa o giro visível.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> espera sem progresso conhecido (requisição à API,
+          upload sem percentual). Se você sabe quanto falta, prefira a barra de progresso.
+        </p>
+        <pre class="codigo"><code>@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 54px;
+  height: 54px;
+  border: 6px solid #e0e0ec;
+  border-top-color: var(--cor-destaque);  /* só o topo colorido */
+  border-radius: 50%;
+  animation: girar 0.9s linear infinite;  /* linear: giro sem solavanco */
+}</code></pre>
+      </article>
+
+      <!-- Skeleton -->
+      <article class="exemplo" id="skeleton">
+        <div class="palco">
+          <div class="skeleton" aria-hidden="true">
+            <div class="linha-fake"></div>
+            <div class="linha-fake"></div>
+            <div class="linha-fake"></div>
+          </div>
+        </div>
+        <h3>Skeleton / shimmer</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> mostrar o "esqueleto" do conteúdo enquanto ele
+          carrega. O brilho que atravessa é um degradê largo
+          (<code>background-size: 200%</code>) cuja posição é animada.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> listas, feeds e cards vindos de uma API.
+          Melhor que o spinner porque já mostra o formato do que vai aparecer,
+          e evita o layout "pular" quando os dados chegam.
+        </p>
+        <pre class="codigo"><code>@keyframes brilho {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+.linha-fake {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e4e4ee 25%, #f4f4fa 50%, #e4e4ee 75%);
+  background-size: 200% 100%;
+  animation: brilho 1.4s linear infinite;
+}</code></pre>
+      </article>
+
+      <!-- Digitação -->
+      <article class="exemplo" id="digitando">
+        <div class="palco">
+          <div class="digitando">Olá, mundo!</div>
+        </div>
+        <h3>Efeito de digitação</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> revelar o texto letra por letra. A largura cresce
+          de 0 até <code>11ch</code> (11 caracteres) e <code>steps(11)</code> faz isso em
+          11 saltos em vez de continuamente — é o que dá a sensação de teclado.
+          Uma segunda animação pisca a borda da direita, que faz as vezes de cursor.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> título de hero em portfólio, terminal falso,
+          landing page de produto técnico.
+        </p>
+        <pre class="codigo"><code>@keyframes digitar {
+  from { width: 0; }
+  to   { width: 11ch; }  /* 11 = nº de caracteres do texto */
+}
+
+@keyframes piscar {
+  0%, 49%   { border-right-color: var(--cor-destaque); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+.digitando {
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--cor-destaque);
+  /* duas animações no mesmo elemento, separadas por vírgula */
+  animation: digitar 2.5s steps(11) infinite alternate,
+             piscar 0.8s step-end infinite;
+}</code></pre>
+      </article>
+
+      <!-- Gradiente -->
+      <article class="exemplo" id="gradiente">
+        <div class="palco">
+          <button class="gradiente" type="button">Botão com degradê vivo</button>
+        </div>
+        <h3>Gradiente animado</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> dar movimento a um fundo sem mexer em nada do
+          layout. O degradê é feito 3x maior que o elemento
+          (<code>background-size: 300%</code>) e o que se anima é a
+          <code>background-position</code>.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> botão de chamada principal (CTA), fundo de seção
+          hero, cartões de destaque.
+        </p>
+        <pre class="codigo"><code>@keyframes mover-gradiente {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.gradiente {
+  background: linear-gradient(90deg, #5b4bdb, #e11d48,
+                              #f0b429, #16a34a, #5b4bdb);
+  background-size: 300% 100%;
+  animation: mover-gradiente 6s ease infinite;
+}</code></pre>
+      </article>
+
+      <!-- Flip -->
+      <article class="exemplo" id="flip">
+        <div class="palco">
+          <div class="cena">
+            <div class="carta">
+              <div class="face frente">Frente</div>
+              <div class="face verso">Verso</div>
+            </div>
+          </div>
+        </div>
+        <h3>Flip / card 3D</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> virar um card no espaço. Três propriedades fazem
+          a mágica: <code>perspective</code> (profundidade) no pai,
+          <code>transform-style: preserve-3d</code> (os filhos existem em 3D) e
+          <code>backface-visibility: hidden</code> (esconde o lado que está de costas).
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> jogo da memória, flashcards de estudo, card de
+          produto que revela detalhes no verso.
+        </p>
+        <pre class="codigo"><code>.cena  { perspective: 800px; }
+
+.carta {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.cena:hover .carta { transform: rotateY(180deg); }
+
+.face  { position: absolute; inset: 0; backface-visibility: hidden; }
+.verso { transform: rotateY(180deg); }</code></pre>
+      </article>
+
+      <!-- Progresso -->
+      <article class="exemplo" id="progresso">
+        <div class="palco">
+          <div class="barra">
+            <div class="preenchimento"></div>
+          </div>
+        </div>
+        <h3>Barra de progresso</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> mostrar o avanço de algo. A barra interna cresce
+          de <code>0%</code> a <code>100%</code> de largura, e o pai tem
+          <code>overflow: hidden</code> com borda arredondada para o preenchimento
+          respeitar o formato.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> upload com percentual, progresso de um formulário
+          em etapas, tempo restante de um toast.
+        </p>
+        <pre class="codigo"><code>@keyframes preencher {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+.barra { overflow: hidden; border-radius: 999px; }
+
+.preenchimento {
+  width: 0;
+  animation: preencher 4s ease-in-out infinite;
+}</code></pre>
+        <p class="dica">
+          Aqui animamos <code>width</code> de propósito, porque é exatamente a largura que
+          precisa mudar. Na prática, numa barra real, o valor vem do JavaScript.
+        </p>
+      </article>
+
+      <!-- Accordion -->
+      <article class="exemplo" id="acordeao">
+        <div class="palco">
+          <div class="acordeao" tabindex="0">
+            <p class="titulo">Passe o mouse (ou dê Tab) para abrir</p>
+            <div class="conteudo">
+              Este conteúdo aparece animando o <code>max-height</code>.
+              Também animamos o <code>padding</code> para o fechamento ficar completo.
+            </div>
+          </div>
+        </div>
+        <h3>Accordion (abrir e fechar)</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> revelar conteúdo escondido com transição.
+          O detalhe importante: <strong>não é possível animar
+          <code>height: auto</code></strong> — o navegador não sabe de que número até que
+          número ir. A solução clássica é animar <code>max-height</code> de
+          <code>0</code> até um valor maior que o conteúdo.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> FAQ, menus de navegação em celular,
+          filtros que ocupam muito espaço.
+        </p>
+        <pre class="codigo"><code>.acordeao .conteudo {
+  max-height: 0;              /* fechado */
+  overflow: hidden;
+  padding: 0 16px;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.acordeao:hover .conteudo,
+.acordeao:focus-within .conteudo {
+  max-height: 200px;          /* qualquer valor maior que o conteúdo */
+  padding: 12px 16px;
+}</code></pre>
+        <p class="dica">
+          Se o <code>max-height</code> for muito maior que o conteúdo real, o fechamento
+          parece ter um atraso — parte do tempo é gasta percorrendo espaço vazio.
+        </p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       SEÇÃO 3 — PROPRIEDADES DE CONTROLE
+       ==================================================================== -->
+  <section class="secao" id="controle">
+    <h2>3. As propriedades <code>animation-*</code></h2>
+    <p class="intro-secao">
+      O <code>@keyframes</code> diz <em>o que</em> acontece. Estas propriedades dizem
+      <em>como</em> acontece.
+    </p>
+
+    <div class="grade">
+
+      <article class="exemplo largo">
+        <div class="palco">
+          <div class="demos-controle">
+            <div>
+              <div class="caixa dur-rapida">0.6s</div>
+              duration curta
+            </div>
+            <div>
+              <div class="caixa dur-lenta">3s</div>
+              duration longa
+            </div>
+            <div>
+              <div class="caixa rep-infinita">∞</div>
+              iteration-count: infinite
+            </div>
+            <div>
+              <div class="caixa dir-alternate">↔</div>
+              direction: alternate
+            </div>
+            <div>
+              <div class="caixa sem-forwards">some</div>
+              sem fill-mode
+            </div>
+            <div>
+              <div class="caixa com-forwards">fica</div>
+              com forwards
+            </div>
+            <div>
+              <div class="caixa pausavel">hover</div>
+              play-state: paused
+            </div>
+          </div>
+        </div>
+        <h3>Para que serve cada propriedade</h3>
+        <p class="para-que-serve">
+          <strong><code>animation-name</code></strong> — qual <code>@keyframes</code> usar.<br>
+          <strong><code>animation-duration</code></strong> — quanto tempo dura um ciclo.
+          Interface normalmente fica entre <code>0.2s</code> e <code>0.5s</code>;
+          acima de <code>1s</code> parece lento.<br>
+          <strong><code>animation-timing-function</code></strong> — o ritmo
+          (<code>ease</code>, <code>linear</code>, <code>steps()</code>…).<br>
+          <strong><code>animation-delay</code></strong> — espera antes de começar.
+          Com valores diferentes por item, cria o efeito cascata.<br>
+          <strong><code>animation-iteration-count</code></strong> — quantas vezes repete
+          (um número ou <code>infinite</code>).<br>
+          <strong><code>animation-direction</code></strong> — <code>normal</code>,
+          <code>reverse</code>, <code>alternate</code> (vai e volta) ou
+          <code>alternate-reverse</code>.<br>
+          <strong><code>animation-fill-mode</code></strong> — o que vale fora da animação.
+          <code>forwards</code> mantém o estado final; <code>backwards</code> aplica o
+          inicial já durante o <em>delay</em>; <code>both</code> faz os dois.<br>
+          <strong><code>animation-play-state</code></strong> —
+          <code>running</code> ou <code>paused</code>. Passe o mouse na última caixa:
+          ela congela.
+        </p>
+        <pre class="codigo"><code>/* forma longa */
+.caixa {
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-timing-function: linear;
+  animation-delay: 0.3s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-fill-mode: forwards;
+}
+
+/* forma abreviada — mesma coisa, nesta ordem:
+   name duration timing-function delay iteration-count direction fill-mode */
+.caixa {
+  animation: girar 2s linear 0.3s infinite alternate forwards;
+}
+
+/* pausar no hover */
+.pausavel:hover { animation-play-state: paused; }</code></pre>
+        <p class="dica">
+          Na forma abreviada, o <strong>primeiro</strong> valor de tempo é a duração e o
+          <strong>segundo</strong> é o delay. <code>animation: girar 2s 1s</code> =
+          dura 2s e espera 1s para começar.
+        </p>
+      </article>
+
+      <article class="exemplo largo" id="cascata">
+        <div class="palco">
+          <ul class="cascata">
+            <li>Item 1 — delay 0.10s</li>
+            <li>Item 2 — delay 0.25s</li>
+            <li>Item 3 — delay 0.40s</li>
+            <li>Item 4 — delay 0.55s</li>
+          </ul>
+        </div>
+        <h3>Delay escalonado (efeito cascata)</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> em vez de a lista inteira aparecer de uma vez,
+          cada item entra um pouquinho depois do anterior. É a mesma animação em todos,
+          só o <code>animation-delay</code> muda — e o
+          <code>:nth-child()</code> faz isso sem precisar de classe por item.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> resultados de busca, itens de menu abrindo,
+          cards de uma galeria. Mantenha o intervalo curto (0,05s a 0,15s): com
+          muitos itens, a última linha demora demais.
+        </p>
+        <pre class="codigo"><code>@keyframes subir {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.cascata li {
+  opacity: 0;
+  animation: subir 0.5s ease forwards;
+}
+
+.cascata li:nth-child(1) { animation-delay: 0.10s; }
+.cascata li:nth-child(2) { animation-delay: 0.25s; }
+.cascata li:nth-child(3) { animation-delay: 0.40s; }
+.cascata li:nth-child(4) { animation-delay: 0.55s; }</code></pre>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ====================================================================
+       SEÇÃO 4 — ACESSIBILIDADE
+       ==================================================================== -->
+  <section class="secao" id="acessibilidade">
+    <h2>4. Acessibilidade — <code>prefers-reduced-motion</code></h2>
+
+    <div class="grade">
+      <article class="exemplo largo">
+        <h3>Para que serve</h3>
+        <p class="para-que-serve">
+          <strong>Para que serve:</strong> desligar ou reduzir as animações para quem
+          pediu isso no sistema operacional. Movimento na tela provoca enjoo, tontura e
+          dor de cabeça em pessoas com distúrbios vestibulares ou sensibilidade a
+          movimento — e muita gente simplesmente prefere interfaces paradas.
+        </p>
+        <p class="quando-usar">
+          <strong>Quando usar:</strong> <em>sempre</em>. É uma única media query no fim do
+          CSS e deveria estar em todo projeto que tenha animação. No macOS a opção fica em
+          Ajustes do Sistema → Acessibilidade → Tela → "Reduzir movimento";
+          no Windows, em Configurações → Acessibilidade → Efeitos visuais.
+        </p>
+        <pre class="codigo"><code>@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* cuidado: o que começa com opacity: 0 precisa continuar visível */
+  .fade-in,
+  .slide-in,
+  .cascata li { opacity: 1; }
+}</code></pre>
+        <p class="dica">
+          A armadilha mais comum: zerar as animações e esquecer que o elemento tinha
+          <code>opacity: 0</code> como estado inicial. Sem a correção acima, o conteúdo
+          some de vez para quem ativou a preferência.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <p>
+      Recarregue a página (<kbd>Cmd</kbd> + <kbd>R</kbd>) para ver de novo as animações
+      de entrada. Todo o CSS está em <code>style.css</code>, comentado por seção.
+    </p>
+  </footer>
+
+
+
+</body></html>

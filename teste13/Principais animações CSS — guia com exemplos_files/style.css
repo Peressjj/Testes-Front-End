@@ -1,0 +1,759 @@
+/* ==========================================================================
+   1. VARIÁVEIS E RESET LEVE
+   ========================================================================== */
+
+:root {
+  --cor-fundo: #f4f4f9;
+  --cor-card: #ffffff;
+  --cor-borda: #d8d8e0;
+  --cor-texto: #2b2b35;
+  --cor-suave: #65657a;
+  --cor-destaque: #5b4bdb;
+  --cor-destaque-escuro: #3f32aa;
+  --cor-ok: #16a34a;
+  --cor-alerta: #e11d48;
+  --cor-codigo-fundo: #1e1e2e;
+  --cor-codigo-texto: #e4e4f0;
+  --raio: 10px;
+  --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px 20px 80px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. LAYOUT DA PÁGINA
+   ========================================================================== */
+
+.cabecalho,
+.indice,
+.secao {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cabecalho {
+  margin-bottom: 32px;
+}
+
+.cabecalho h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+
+.cabecalho .subtitulo {
+  margin: 0 0 24px;
+  color: var(--cor-suave);
+}
+
+/* Os dois quadros que explicam transition x animation */
+.conceitos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.conceito {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-left: 4px solid var(--cor-destaque);
+  border-radius: var(--raio);
+  padding: 16px 20px;
+}
+
+.conceito h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.conceito p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--cor-suave);
+}
+
+.indice {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  padding: 16px 20px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+}
+
+.indice h2 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--cor-suave);
+}
+
+.indice ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+
+.indice a {
+  color: var(--cor-destaque);
+  text-decoration: none;
+  font-size: 14px;
+  border: 1px solid var(--cor-borda);
+  border-radius: 999px;
+  padding: 4px 12px;
+  /* transição simples só para o índice ficar agradável */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.indice a:hover,
+.indice a:focus-visible {
+  background-color: var(--cor-destaque);
+  color: #fff;
+}
+
+.secao {
+  margin-bottom: 48px;
+}
+
+.secao > h2 {
+  font-size: 24px;
+  border-bottom: 2px solid var(--cor-borda);
+  padding-bottom: 8px;
+  /* scroll-margin evita que o título fique colado no topo ao usar as âncoras */
+  scroll-margin-top: 16px;
+}
+
+.secao > .intro-secao {
+  color: var(--cor-suave);
+  margin-top: 0;
+}
+
+.grade {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+/* Card de exemplo: palco + explicação + código */
+.exemplo {
+  background-color: var(--cor-card);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+  box-shadow: var(--sombra);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-margin-top: 16px;
+}
+
+.exemplo.largo {
+  grid-column: 1 / -1;
+}
+
+.exemplo h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.exemplo p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.exemplo .para-que-serve strong {
+  color: var(--cor-destaque-escuro);
+}
+
+.exemplo .quando-usar {
+  color: var(--cor-suave);
+}
+
+/* O "palco" é a área onde a demo acontece */
+.palco {
+  min-height: 130px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #f8f8fc;
+  border: 1px dashed var(--cor-borda);
+  border-radius: 8px;
+  padding: 20px;
+  /* esconde o que sair da área durante a animação */
+  overflow: hidden;
+}
+
+pre.codigo {
+  margin: 0;
+  background-color: var(--cor-codigo-fundo);
+  color: var(--cor-codigo-texto);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  overflow-x: auto;
+}
+
+pre.codigo code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  white-space: pre;
+}
+
+.dica {
+  font-size: 13px;
+  background-color: #fff8e6;
+  border-left: 3px solid #f0b429;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #6b5200;
+}
+
+.rodape {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--cor-suave);
+  font-size: 13px;
+}
+
+/* Caixinha padrão usada em várias demos */
+.caixa {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--cor-destaque);
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.botao {
+  background-color: var(--cor-destaque);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. TRANSIÇÕES (transition)
+   Mudam de um estado A para um estado B. Precisam de um gatilho:
+   :hover, :focus, :active, :checked...
+   ========================================================================== */
+
+/* 3.1 — transition básica no hover */
+.transicao-basica {
+  background-color: var(--cor-destaque);
+  transition: background-color 0.4s ease, transform 0.4s ease;
+}
+
+.transicao-basica:hover {
+  background-color: var(--cor-ok);
+  transform: translateY(-10px);
+}
+
+/* 3.2 — comparando as funções de tempo (timing functions).
+   Todas percorrem a mesma distância, no mesmo tempo, com ritmos diferentes. */
+.pista {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pista .linha {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--cor-suave);
+}
+
+.pista .rotulo {
+  width: 150px;
+  flex-shrink: 0;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+
+.pista .trilho {
+  flex: 1;
+  height: 22px;
+  background-color: #ececf4;
+  border-radius: 999px;
+  /* container-type permite usar a unidade cqw (largura deste trilho) abaixo */
+  container-type: inline-size;
+}
+
+.bolinha {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--cor-destaque);
+  transition-property: transform;
+  transition-duration: 1.2s;
+}
+
+/* o gatilho é o hover no card inteiro, para todas as bolinhas correrem juntas.
+   100cqw = largura do trilho, 100% = largura da bolinha */
+.exemplo-tempos:hover .bolinha {
+  transform: translateX(calc(100cqw - 100%));
+}
+
+.tempo-linear      { transition-timing-function: linear; }
+.tempo-ease        { transition-timing-function: ease; }
+.tempo-ease-in     { transition-timing-function: ease-in; }
+.tempo-ease-out    { transition-timing-function: ease-out; }
+.tempo-ease-in-out { transition-timing-function: ease-in-out; }
+.tempo-bezier      { transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55); }
+
+/* 3.3 — transform: translate, scale, rotate, skew */
+.exemplo-transform .caixa {
+  transition: transform 0.5s ease;
+  width: 70px;
+  height: 70px;
+  font-size: 11px;
+}
+
+.t-translate:hover { transform: translate(0, -20px); }
+.t-scale:hover     { transform: scale(1.3); }
+.t-rotate:hover    { transform: rotate(45deg); }
+.t-skew:hover      { transform: skewX(-15deg); }
+
+/* ==========================================================================
+   4. @KEYFRAMES — as animações
+   Definem vários estágios. Rodam sozinhas, podem repetir e inverter.
+   ========================================================================== */
+
+/* aparecer: de invisível para visível */
+@keyframes aparecer {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* entrar-esquerda: desliza de fora da tela para o lugar */
+@keyframes entrar-esquerda {
+  from {
+    opacity: 0;
+    transform: translateX(-120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* quicar: sobe e desce perdendo força, como uma bolinha */
+@keyframes quicar {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-30px); }
+  50%  { transform: translateY(0); }
+  70%  { transform: translateY(-15px); }
+  85%  { transform: translateY(0); }
+  92%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* pulsar: cresce e volta — usado para chamar atenção ou dar feedback */
+@keyframes pulsar {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* tremer: vai e volta na horizontal — clássico de erro de formulário */
+@keyframes tremer {
+  0%, 100%      { transform: translateX(0); }
+  20%, 60%      { transform: translateX(-10px); }
+  40%, 80%      { transform: translateX(10px); }
+}
+
+/* girar: uma volta completa */
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* brilho: move o reflexo do skeleton da esquerda para a direita */
+@keyframes brilho {
+  from { background-position: -200% 0; }
+  to   { background-position: 200% 0; }
+}
+
+/* digitar: revela o texto aumentando a largura */
+@keyframes digitar {
+  from { width: 0; }
+  to   { width: 11ch; }  /* 11 = quantidade de caracteres do texto */
+}
+
+/* piscar: liga e desliga a borda que faz o cursor */
+@keyframes piscar {
+  0%, 49%   { border-right-color: var(--cor-destaque); }
+  50%, 100% { border-right-color: transparent; }
+}
+
+/* mover-gradiente: desloca o fundo para o degradê parecer vivo */
+@keyframes mover-gradiente {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* preencher: faz a barra de progresso ir de 0 a 100% */
+@keyframes preencher {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
+/* subir: entra de baixo para cima (usado na cascata) */
+@keyframes subir {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   5. CLASSES QUE USAM AS ANIMAÇÕES
+   ========================================================================== */
+
+/* 5.1 — Fade in */
+.fade-in {
+  opacity: 0;
+  animation: aparecer 1.2s ease forwards;
+}
+
+/* 5.2 — Slide in */
+.slide-in {
+  opacity: 0;
+  animation: entrar-esquerda 1s ease-out forwards;
+}
+
+/* 5.3 — Bounce: só no hover, para o aluno disparar quando quiser */
+.quicar:hover {
+  animation: quicar 1.4s ease;
+  cursor: pointer;
+}
+
+/* 5.4 — Pulse: no clique (feedback) e em loop no badge */
+.pulsar-clique:active {
+  animation: pulsar 0.5s ease;
+}
+
+.badge {
+  background-color: var(--cor-alerta);
+  color: #fff;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  animation: pulsar 1.5s ease-in-out infinite;
+}
+
+/* 5.5 — Shake: erro de validação */
+.campo-erro {
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  border: 2px solid var(--cor-alerta);
+  border-radius: 8px;
+  background-color: #fff1f3;
+}
+
+/* dispara quando o campo recebe o foco, simulando o retorno do erro */
+.campo-erro:focus {
+  outline: none;
+  animation: tremer 0.5s ease;
+}
+
+/* 5.6 — Spinner de carregamento */
+.spinner {
+  width: 54px;
+  height: 54px;
+  border: 6px solid #e0e0ec;
+  border-top-color: var(--cor-destaque);
+  border-radius: 50%;
+  animation: girar 0.9s linear infinite;
+}
+
+/* 5.7 — Skeleton / shimmer */
+.skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton .linha-fake {
+  height: 14px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #e4e4ee 25%, #f4f4fa 50%, #e4e4ee 75%);
+  background-size: 200% 100%;
+  animation: brilho 1.4s linear infinite;
+}
+
+.skeleton .linha-fake:nth-child(2) { width: 85%; }
+.skeleton .linha-fake:nth-child(3) { width: 60%; }
+
+/* 5.8 — Efeito de digitação */
+.digitando {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--cor-destaque);
+  width: 11ch;
+  /* duas animações no mesmo elemento, separadas por vírgula */
+  animation:
+    digitar 2.5s steps(11) infinite alternate,
+    piscar 0.8s step-end infinite;
+}
+
+/* 5.9 — Gradiente animado */
+.gradiente {
+  padding: 18px 28px;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  background: linear-gradient(90deg, #5b4bdb, #e11d48, #f0b429, #16a34a, #5b4bdb);
+  background-size: 300% 100%;
+  animation: mover-gradiente 6s ease infinite;
+}
+
+/* 5.10 — Card que vira (flip 3D) */
+.cena {
+  width: 170px;
+  height: 110px;
+  /* perspective dá a sensação de profundidade */
+  perspective: 800px;
+}
+
+.carta {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease;
+}
+
+.cena:hover .carta {
+  transform: rotateY(180deg);
+}
+
+.carta .face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: bold;
+  /* esconde o lado que está de costas */
+  backface-visibility: hidden;
+}
+
+.carta .frente { background-color: var(--cor-destaque); }
+
+.carta .verso {
+  background-color: var(--cor-ok);
+  transform: rotateY(180deg);
+}
+
+/* 5.11 — Barra de progresso */
+.barra {
+  width: 100%;
+  height: 22px;
+  background-color: #e4e4ee;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra .preenchimento {
+  height: 100%;
+  width: 0;
+  background-color: var(--cor-ok);
+  border-radius: 999px;
+  animation: preencher 4s ease-in-out infinite;
+}
+
+/* 5.12 — Accordion com max-height */
+.acordeao {
+  width: 100%;
+  border: 1px solid var(--cor-borda);
+  border-radius: 8px;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.acordeao .titulo {
+  margin: 0;
+  padding: 12px 16px;
+  background-color: #efeffa;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.acordeao .conteudo {
+  /* animar height: auto não funciona; por isso usamos max-height */
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease, padding 0.5s ease;
+  padding: 0 16px;
+  font-size: 14px;
+  color: var(--cor-suave);
+}
+
+.acordeao:hover .conteudo,
+.acordeao:focus-within .conteudo {
+  max-height: 200px;
+  padding: 12px 16px;
+}
+
+/* ==========================================================================
+   6. PROPRIEDADES DE CONTROLE (animation-*)
+   ========================================================================== */
+
+.demos-controle {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--cor-suave);
+}
+
+.demos-controle .caixa {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 6px;
+  font-size: 11px;
+}
+
+/* duration: a mesma animação, tempos diferentes */
+.dur-rapida { animation: girar 0.6s linear infinite; }
+.dur-lenta  { animation: girar 3s linear infinite; }
+
+/* iteration-count: quantas vezes repete (um número ou infinite) */
+.rep-infinita { animation: pulsar 1s ease infinite; }
+
+/* direction: alternate faz a animação voltar invertida em vez de dar um salto */
+@keyframes ir-para-o-lado {
+  from { transform: translateX(-30px); }
+  to   { transform: translateX(30px); }
+}
+
+.dir-alternate { animation: ir-para-o-lado 1.5s ease-in-out infinite alternate; }
+
+/* fill-mode: sem forwards o elemento volta ao estado inicial no fim */
+.sem-forwards { opacity: 0; animation: aparecer 2s ease; }
+.com-forwards { opacity: 0; animation: aparecer 2s ease forwards; }
+
+/* play-state: pausa a animação enquanto o mouse está em cima */
+.pausavel { animation: girar 2s linear infinite; }
+.pausavel:hover { animation-play-state: paused; }
+
+/* delay escalonado: cria o efeito cascata numa lista */
+.cascata {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cascata li {
+  opacity: 0;
+  background-color: #efeffa;
+  border-radius: 6px;
+  padding: 10px 14px;
+  font-size: 14px;
+  animation: subir 0.5s ease forwards;
+}
+
+.cascata li:nth-child(1) { animation-delay: 0.1s; }
+.cascata li:nth-child(2) { animation-delay: 0.25s; }
+.cascata li:nth-child(3) { animation-delay: 0.4s; }
+.cascata li:nth-child(4) { animation-delay: 0.55s; }
+
+/* ==========================================================================
+   7. ACESSIBILIDADE — prefers-reduced-motion
+   Respeita quem ativou "reduzir movimento" no sistema operacional.
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* o conteúdo que entra com fade precisa continuar visível */
+  .fade-in,
+  .slide-in,
+  .sem-forwards,
+  .com-forwards,
+  .cascata li {
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   8. RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  body {
+    padding: 20px 14px 60px;
+  }
+
+  .cabecalho h1 {
+    font-size: 24px;
+  }
+
+  .grade {
+    grid-template-columns: 1fr;
+  }
+
+  .pista .rotulo {
+    width: 110px;
+    font-size: 11px;
+  }
+}
