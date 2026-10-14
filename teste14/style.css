@@ -1,0 +1,50 @@
+body {
+   background-image: url(../../imagens/Wallpaper\ estátua\ PC.jpg);
+   background-position: center;
+   background-size: cover;
+   background-repeat: unset;
+}
+
+.title_page {
+   color: white;
+   border-radius: 10px;
+   border: solid red 3px;
+   font-size: 50px;
+   display: flex;
+   justify-content: center;
+   background-color: black;
+}
+
+#main {
+   border: solid yellow 3px;
+   width: 90%;
+   max-width: 800px;
+   margin: 0 auto;
+   min-height: 100vh;
+   border-radius: 10px;
+   backdrop-filter: blur(10px);
+   display: flex;
+   justify-content: center;
+   align-items: start;
+   padding: 30px;
+}
+
+.test {
+   width: 90%;
+   max-width: 800px;
+   margin: 0 auto;
+   border: solid red 3px;
+   font-family: cursive;
+   font-size: 50px;
+   color: white;
+   background-color: black;
+   border-radius: 10px;
+   padding: 10px;
+}
+
+img {
+   max-width: 100%;
+   height: auto;
+   border: solid blue 3px;
+   border-radius: 10px;
+}
