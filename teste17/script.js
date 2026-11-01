@@ -50,3 +50,29 @@ function Mostrarnome() {
 
    return nome;
 }
+
+/*Class 4*/
+
+const classes = document.getElementsByClassName("4");
+
+for (let i = 0; i < classes.length; i++) {
+   classes[i].style.backgroundColor = "black";
+   classes[i].style.color = "white";
+   classes[i].style.fontSize = "22px";
+   classes[i].style.padding = "10px";
+   classes[i].style.border = "solid white 1px";
+   classes[i].style.borderRadius = "10px";
+}
+
+
+/*buttons*/
+
+const botao = document.getElementsByTagName("button");
+
+for (let i = 0; i < botao.length; i++) {
+   botao[i].style.border = "solid red 3px";
+   botao[i].style.backgroundColor = "black";
+   botao[i].style.color = "white";
+   botao[i].style.fontSize = "22px";
+   botao[i].textContent = "Botoes";
+}
