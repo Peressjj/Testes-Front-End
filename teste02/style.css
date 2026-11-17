@@ -1,3 +1,7 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 body {
     
     /*
@@ -13,6 +17,7 @@ body {
     font-family: Arial, sans-serif;
     */
 
+    margin: 0;
     background-image: url('Wallpaper\ TW\ psicodélica.png');
     background-size: cover;
     background-position: center;
@@ -237,3 +242,99 @@ body {
     transform: scale(1.18);
 }
 
+
+
+/* Adicionado responsividade */
+
+.container-perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 20px;
+    text-align: center;
+    transition: opacity 0.6s ease;
+}
+
+.tela-selecao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 20px;
+    gap: 40px;
+}
+
+.tela-pin.ativa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+.foto-perfil {
+    width: clamp(110px, 30vw, 150px);
+    aspect-ratio: 1 / 1;
+    /* altura = largura, mantém o círculo */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #8d088f;
+}
+
+.perfil-item-foto {
+    position: relative;
+    z-index: 1;
+    width: clamp(80px, 22vw, 120px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #8d088f;
+    transition: transform 0.25s ease;
+}
+
+.titulo-selecao {
+    font-size: clamp(24px, 7vw, 32px);
+    text-align: center;
+    /* ...o resto igual... */
+}
+
+.container-perfil h2 {
+    font-size: clamp(22px, 6vw, 30px);
+    /* ...o resto igual... */
+}
+
+.lista-perfis {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* era nowrap */
+    gap: clamp(20px, 5vw, 40px);
+    justify-content: center;
+    align-items: center;
+}
+
+@media (hover: hover) {
+    .perfil-item:hover .perfil-item-foto {
+        transform: scale(1.18);
+    }
+}
+
+@media (max-width: 480px) {
+    .caixa-pin {
+        width: 100%;
+        max-width: 280px;
+        padding: 10px 14px;
+        /* área de toque maior */
+    }
+
+    .caixa-pin input {
+        width: 100%;
+        font-size: 16px;
+        /* abaixo de 16px o iPhone dá zoom ao focar */
+    }
+}
